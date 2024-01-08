@@ -1,9 +1,9 @@
 export DISABLE_AUTOBREW=1
 
 # https://github.com/conda-forge/r-changeforest-feedstock/issues/28
-if [[ $target_platform == osx-64 ]]; then
-  export TARGET="aarch64-apple-darwin"
-  rustup target add aarch64-apple-darwin
+if [[ $target_platform == osx-arm64 ]]; then
+  export RUST_TARGET="aarch64-apple-darwin" ## let's try just this one first
+  ##rustup target add aarch64-apple-darwin
 fi
 
 # Pass R version to libR-sys package via environment variable. This allows for cross-compilation,
