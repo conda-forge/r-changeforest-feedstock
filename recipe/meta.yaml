@@ -29,7 +29,7 @@ requirements:
   build:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
     - r-r6                       # [build_platform != target_platform]
-    - rust
+    - {{ compiler('rust') }}
     - {{ compiler('c') }}
     - {{ compiler('m2w64_c') }}    # [win]
     - {{ posix }}filesystem        # [win]
