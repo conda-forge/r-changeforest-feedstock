@@ -1,7 +1,6 @@
 {% set name = "r-changeforest" %}
 {% set version = "1.1.4" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: {{ name|lower }}
@@ -17,12 +16,12 @@ source:
   sha256: f54652d65a77a809576eafd7bc0a1f41206e99860a4448c6b96031eba7c4a5b6
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
-  skip: true  # [win]
+  # Checking windows to see if it passes. Uncomment the line if it fails.
+  # skip: true  # [win]
 
 # Taken from https://github.com/conda-forge/r-gifski-feedstock
 requirements:
@@ -31,7 +30,9 @@ requirements:
     - r-r6                       # [build_platform != target_platform]
     - {{ compiler('rust') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -48,7 +49,6 @@ requirements:
   run:
     - r-base
     - r-r6
-    - {{ native }}gcc-libs         # [win]
 
 test:
   commands:
