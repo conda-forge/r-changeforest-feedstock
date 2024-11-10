@@ -1,0 +1,41 @@
+From 8baa6a727c52246a7e60fcc59910cb9ef41c88d5 Mon Sep 17 00:00:00 2001
+From: Daniel Nachun <daniel.nachun@gmail.com>
+Date: Sun, 10 Nov 2024 13:53:41 -0800
+Subject: [PATCH 2/2] try to fix cargo build
+
+---
+ changeforest-r/src/Makevars.in  | 2 +-
+ changeforest-r/src/Makevars.win | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/changeforest-r/src/Makevars.in b/changeforest-r/src/Makevars.in
+index 0ed0ed5..f79f8d3 100644
+--- a/changeforest-r/src/Makevars.in
++++ b/changeforest-r/src/Makevars.in
+@@ -18,7 +18,7 @@ $(STATLIB):
+ 		export CARGO_HOME=$(CARGOTMP); \
+ 	fi && \
+ 		export PATH="$(PATH):$(HOME)/.cargo/bin" && \
+-		cargo build --target=$(TARGET) --lib --release --manifest-path=./rust/Cargo.toml --target-dir $(TARGET_DIR)
++		cargo build --lib --release --manifest-path=./rust/Cargo.toml --target-dir $(TARGET_DIR)
+ 	if [ "$(NOT_CRAN)" != "true" ]; then \
+ 		rm -Rf $(CARGOTMP) && \
+ 		rm -Rf $(LIBDIR)/build; \
+diff --git a/changeforest-r/src/Makevars.win b/changeforest-r/src/Makevars.win
+index caf64e0..54445eb 100644
+--- a/changeforest-r/src/Makevars.win
++++ b/changeforest-r/src/Makevars.win
+@@ -25,9 +25,8 @@ $(STATLIB):
+ 	if [ "$(NOT_CRAN)" != "true" ]; then \
+ 		export CARGO_HOME=$(CARGOTMP); \
+ 	fi && \
+-		export CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER="$(CARGO_LINKER)" && \
+ 		export LIBRARY_PATH="$${LIBRARY_PATH};$(CURDIR)/$(TARGET_DIR)/libgcc_mock" && \
+-		cargo build --target=$(TARGET) --lib --release --manifest-path=./rust/Cargo.toml --target-dir $(TARGET_DIR)
++		cargo build --lib --release --manifest-path=./rust/Cargo.toml --target-dir $(TARGET_DIR)
+ 	if [ "$(NOT_CRAN)" != "true" ]; then \
+ 		rm -Rf $(CARGOTMP) && \
+ 		rm -Rf $(LIBDIR)/build; \
+-- 
+2.47.0
+

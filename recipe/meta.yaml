@@ -14,6 +14,8 @@ source:
   # https://github.com/mlondschien/changeforest/releases/download/{{ version }}/{{ version }}.tar.gz
   # don't work.
   sha256: f54652d65a77a809576eafd7bc0a1f41206e99860a4448c6b96031eba7c4a5b6
+  patches:
+    - patches/0001-try-to-fix-cargo-build.patch
 
 build:
   number: 1
