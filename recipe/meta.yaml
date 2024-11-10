@@ -33,8 +33,6 @@ requirements:
     - {{ compiler('rust') }}
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
-    - {{ compiler('m2w64_c') }}    # [win]
-    - {{ stdlib("m2w64_c") }}      # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
