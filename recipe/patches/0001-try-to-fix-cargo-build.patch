@@ -1,12 +1,12 @@
-From 8baa6a727c52246a7e60fcc59910cb9ef41c88d5 Mon Sep 17 00:00:00 2001
+From f6332496790bec339e330da6e619ffabc1cd3995 Mon Sep 17 00:00:00 2001
 From: Daniel Nachun <daniel.nachun@gmail.com>
 Date: Sun, 10 Nov 2024 13:53:41 -0800
 Subject: [PATCH 2/2] try to fix cargo build
 
 ---
  changeforest-r/src/Makevars.in  | 2 +-
- changeforest-r/src/Makevars.win | 3 +--
- 2 files changed, 2 insertions(+), 3 deletions(-)
+ changeforest-r/src/Makevars.win | 5 ++---
+ 2 files changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/changeforest-r/src/Makevars.in b/changeforest-r/src/Makevars.in
 index 0ed0ed5..f79f8d3 100644
@@ -22,9 +22,18 @@ index 0ed0ed5..f79f8d3 100644
  		rm -Rf $(CARGOTMP) && \
  		rm -Rf $(LIBDIR)/build; \
 diff --git a/changeforest-r/src/Makevars.win b/changeforest-r/src/Makevars.win
-index caf64e0..54445eb 100644
+index caf64e0..e51861b 100644
 --- a/changeforest-r/src/Makevars.win
 +++ b/changeforest-r/src/Makevars.win
+@@ -1,7 +1,7 @@
+ TARGET = $(subst 64,x86_64,$(subst 32,i686,$(WIN)))-pc-windows-gnu
+ 
+ TARGET_DIR = ./rust/target
+-LIBDIR = $(TARGET_DIR)/$(TARGET)/release
++LIBDIR = $(TARGET_DIR)/release
+ STATLIB = $(LIBDIR)/libchangeforestr.a
+ PKG_LIBS = -L$(LIBDIR) -lchangeforestr -lws2_32 -ladvapi32 -luserenv -lbcrypt -lntdll
+ 
 @@ -25,9 +25,8 @@ $(STATLIB):
  	if [ "$(NOT_CRAN)" != "true" ]; then \
  		export CARGO_HOME=$(CARGOTMP); \
