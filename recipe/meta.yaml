@@ -22,7 +22,6 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
-  skip: true  # [win]
 
 # Taken from https://github.com/conda-forge/r-gifski-feedstock
 requirements:
