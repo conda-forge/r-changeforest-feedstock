@@ -1,5 +1,3 @@
-c_compiler:
-- vs2019
 c_stdlib:
 - vs
 channel_sources:
@@ -12,6 +10,8 @@ pin_run_as_build:
     max_pin: x.x
 r_base:
 - '4.3'
+r_clang_compiler_version:
+- '18'
 rust_compiler:
 - rust
 target_platform:
