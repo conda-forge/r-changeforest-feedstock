@@ -23,7 +23,7 @@ build:
     - lib/R/lib/
     - lib/
   # Checking windows to see if it passes. Uncomment the line if it fails.
-  # skip: true  # [win]
+  skip: true  # [win]
 
 # Taken from https://github.com/conda-forge/r-gifski-feedstock
 requirements:
@@ -31,9 +31,10 @@ requirements:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
     - r-r6                       # [build_platform != target_platform]
     - {{ compiler('rust') }}
-    - {{ compiler('c') }}  # [not win]
+    - {{ compiler('c') }}
     - {{ stdlib("c") }}
-    - {{ compiler('r_clang') }}  # [win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
