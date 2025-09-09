@@ -1,5 +1,5 @@
 {% set name = "r-changeforest" %}
-{% set version = "1.1.4" %}
+{% set version = "1.2.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -13,12 +13,10 @@ source:
   # and
   # https://github.com/mlondschien/changeforest/releases/download/{{ version }}/{{ version }}.tar.gz
   # don't work.
-  sha256: f54652d65a77a809576eafd7bc0a1f41206e99860a4448c6b96031eba7c4a5b6
-  patches:
-    - patches/0001-try-to-fix-cargo-build.patch
+  sha256: 0ece422f696b5c8cc6b74795bf3f918b4489a4b223746726bcb61f6137003649
 
 build:
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
